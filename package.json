@@ -16,6 +16,7 @@
     "lint:watch:fix": "esw --fix --watch src stories",
     "build": "babel src --out-dir dist --copy-files",
     "build-storybook": "build-storybook",
+    "build-tailwindcss": "npx postcss src/styles/tailwind.css -o src/styles/index.css",
     "start": "start-storybook -p 6006"
   },
   "peerDependencies": {
@@ -31,6 +32,7 @@
     "@storybook/addon-actions": "^6.2.9",
     "@storybook/addon-essentials": "^6.2.9",
     "@storybook/addon-links": "^6.2.9",
+    "@storybook/addon-postcss": "^2.0.0",
     "@storybook/react": "^6.2.9",
     "eslint": "^7.27.0",
     "eslint-plugin-jest": "^24.3.6",
@@ -41,5 +43,12 @@
     "react-dom": "^17.0.2",
     "react-test-renderer": "^17.0.2",
     "storybook": "^6.2.9"
+  },
+  "dependencies": {
+    "@tailwindcss/postcss7-compat": "^2.1.2",
+    "autoprefixer": "^9.8.6",
+    "postcss": "^8.3.0",
+    "postcss-cli": "^8.3.1",
+    "tailwindcss": "yarn:@tailwindcss/postcss7-compat@^2.1.2"
   }
 }
