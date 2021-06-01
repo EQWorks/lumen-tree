@@ -1,0 +1,45 @@
+{
+  "name": "@eqworks/lumen-tree",
+  "version": "0.1.0",
+  "description": "Lumen-Tree",
+  "main": "dist/index.js",
+  "source": "src/index.js",
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "author": "EQ Inc.",
+  "license": "MIT",
+  "scripts": {
+    "lint": "eslint src stories",
+    "lint:watch:fix": "esw --fix --watch src stories",
+    "build": "babel src --out-dir dist --copy-files",
+    "build-storybook": "build-storybook",
+    "start": "start-storybook -p 6006"
+  },
+  "peerDependencies": {
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.14.3",
+    "@babel/core": "^7.14.3",
+    "@babel/eslint-parser": "^7.14.4",
+    "@babel/preset-env": "^7.14.4",
+    "@babel/preset-react": "^7.13.13",
+    "@storybook/addon-actions": "^6.2.9",
+    "@storybook/addon-essentials": "^6.2.9",
+    "@storybook/addon-links": "^6.2.9",
+    "@storybook/react": "^6.2.9",
+    "eslint": "^7.27.0",
+    "eslint-plugin-jest": "^24.3.6",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-watch": "^7.0.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
+    "react-test-renderer": "^17.0.2",
+    "storybook": "^6.2.9"
+  }
+}
