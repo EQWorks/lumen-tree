@@ -1,13 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import List from './list'
 import ListItem from './list-item'
-import { classes } from './classes'
 
 
-const List = ({ menu, border, width, maxWidth, selected, ...props }) => {
+const LumenList = ({ menu, selected, ...props }) => {
   return (
-    <ul className={border ? classes.listRoot({ border, width, maxWidth }) : null}>
+    <List {...props}>
       {menu.map(({ id, name, ...rest }, i) => {
         return (<ListItem
           key={id}
@@ -18,31 +18,16 @@ const List = ({ menu, border, width, maxWidth, selected, ...props }) => {
           { ...props }
         />)
       })}
-    </ul>
+    </List>
   )
 }
 
-List.propTypes = {
+LumenList.propTypes = {
   menu: PropTypes.array.isRequired,
-  border: PropTypes.oneOfType([
-    PropTypes.bool,
-    PropTypes.string,
-  ]),
-  width: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
-  maxWidth: PropTypes.oneOfType([
-    PropTypes.number,
-    PropTypes.string,
-  ]),
   selected: PropTypes.object,
 }
-List.defaultProps = {
-  border: false,
-  width: 'full',
-  maxWidth: 'full',
+LumenList.defaultProps = {
   selected: {},
 }
 
-export default List
+export default LumenList

@@ -37,8 +37,8 @@ ListItem.propTypes = {
   selected: PropTypes.bool,
   value: PropTypes.object,
   onClick: PropTypes.func,
-  EndIcon: PropTypes.node,
-  StartIcon: PropTypes.node,
+  EndIcon: PropTypes.any,
+  StartIcon: PropTypes.any,
 }
 ListItem.defaultProps = {
   name: '',

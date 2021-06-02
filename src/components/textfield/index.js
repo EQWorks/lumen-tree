@@ -6,12 +6,18 @@ import { useMenuIsOpen } from '../hooks'
 import { ChevronDown, ChevronUp } from '../icons'
 
 
-const Textfield = ({ select, value, defaultValue, onChange, ...rest }) => {
+const Textfield = ({ focus: _focus, select, value, defaultValue, onClick, onChange, ...rest }) => {
   const [val, setVal] = useState(defaultValue)
-  const { ref, menuIsOpen: focus, setMenuIsOpen: setFocus } = useMenuIsOpen()
+  const { ref, menuIsOpen, setMenuIsOpen: _setFocus } = useMenuIsOpen()
+  let focus = menuIsOpen
+
+  if (select) {
+    focus = _focus
+  }
 
   const inputOnClick = () => {
-    setFocus(true)
+    _setFocus(true)
+    onClick()
   }
 
   const inputOnChange = (e) => {
@@ -39,13 +45,19 @@ Textfield.propTypes = {
   select: PropTypes.bool,
   value: PropTypes.string,
   defaultValue: PropTypes.string,
+  onClick: PropTypes.func,
   onChange: PropTypes.func,
+  ref: PropTypes.node,
+  focus: PropTypes.bool,
 }
 Textfield.defaultProps = {
   select: false,
   value: '',
   defaultValue: '',
+  onClick: () => {},
   onChange: () => {},
+  ref: null,
+  focus: false,
 }
 
 export default Textfield
