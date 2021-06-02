@@ -29,7 +29,10 @@ module.exports = {
 
       /* -- custom styles --*/
       grey: '#BDBDBD',
+      lightgrey: '#FAFAFA',
       primary: '#0075FF',
+      'primary-10': '#F3FAFF',
+      'primary-20': '#E8F7FF',
     },
     spacing: {
       px: '1px',
@@ -787,6 +790,8 @@ module.exports = {
       screen: '100vw',
       min: 'min-content',
       max: 'max-content',
+      /* -- custom styles -- */
+      sm: '150px',
     }),
     zIndex: {
       auto: 'auto',
