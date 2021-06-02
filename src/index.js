@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useState } from 'react'
+
+import { Dialog, Textfield } from './components'
+import { useMenuIsOpen } from './components/hooks'
 
 
 const Tree = () => {
+  const { ref, menuIsOpen, setMenuIsOpen } = useMenuIsOpen()
+
   return (
-    <div className='z-10 w-full min-w-150 shadow-sm'>
-      <p>Hello</p>
+    <div ref={ref}>
+      <Dialog open={menuIsOpen}>
+        Just saying hi
+      </Dialog>
+      <button onClick={() => {
+        console.log('clicked')
+        setMenuIsOpen(!menuIsOpen)
+      }} className='text-4xl font-bold'>Hello</button>
+      <Textfield select />
     </div>
   )
 }
