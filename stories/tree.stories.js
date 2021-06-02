@@ -1,5 +1,5 @@
 import React from 'react'
-import Tree from '../src'
+import { Tree } from '../src'
 
 
 export default {

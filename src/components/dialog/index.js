@@ -5,7 +5,7 @@ import PropTypes from 'prop-types'
 const Dialog = ({ open, children }) => {
   if (open) {
     return (
-      <div className='z-10 shadow-md'>{children}</div>
+      <div className='p-sm z-10 shadow-md'>{children}</div>
     )
   }
   return null
