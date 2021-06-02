@@ -5,16 +5,15 @@ import List from '../list/list'
 import ListItem from '../list/list-item'
 
 
-const ListMenu = ({ options, onClick }) => {
-  console.log('options: ', options)
+const ListMenu = ({ options, onClick, width }) => {
   return (
-    <List>
+    <List width={width}>
       {options.map((option, i) => {
         return (<ListItem
           key={i}
           name={`${(option.map(({ name }) => name)).join(' › ')}`}
           onClick={() => onClick(option)}
-          isLastItem={Boolean(options.length === i)}
+          isLastItem={Boolean(options.length - 1 === i)}
         />)
       })}
     </List>
@@ -24,6 +23,10 @@ const ListMenu = ({ options, onClick }) => {
 ListMenu.propTypes = {
   options: PropTypes.array.isRequired,
   onClick: PropTypes.func,
+  width: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.number,
+  ]),
 }
-ListMenu.defaultProps = { onClick: () => {} }
+ListMenu.defaultProps = { onClick: () => {}, width: 'full' }
 export default ListMenu

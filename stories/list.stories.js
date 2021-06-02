@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { ChevronRightOutlined, ChevronDownOutlined } from '../src/components/icons'
+import { ChevronRight, ChevronDownOutlined } from '../src/components/icons'
 import List from '../src/components/list'
 
 
@@ -48,7 +48,7 @@ export const Icons = () => {
       </div>
       <div style={{ marginTop: 30 }}>
         <p>End Icon:</p>
-        <List divider menu={[{ ...menu[0] }]} EndIcon={() => <ChevronRightOutlined />} selected={menu[0]} />
+        <List divider menu={[{ ...menu[0] }]} EndIcon={() => <ChevronRight />} selected={menu[0]} />
       </div>
     </>
   )

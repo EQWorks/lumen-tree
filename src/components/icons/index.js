@@ -1,4 +1,5 @@
 export { default as ChevronDown } from './chevron-down'
 export { default as ChevronUp } from './chevron-up'
-export { default as ChevronRightOutlined } from './chevron-right-outlined'
+export { default as ChevronRight } from './chevron-right'
 export { default as ChevronDownOutlined } from './chevron-down-outlined'
+export { default as CheckOutlined } from './check-outlined'

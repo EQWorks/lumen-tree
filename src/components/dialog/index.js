@@ -6,7 +6,7 @@ const Dialog = ({ open, children, disablePadding }) => {
   const padding = disablePadding ? '': 'p-sm'
   if (open) {
     return (
-      <div className={`z-10 shadow-md mt-1 ${padding}`}>{children}</div>
+      <div className={`inline-flex z-10 shadow-md mt-1 ${padding}`}>{children}</div>
     )
   }
   return null

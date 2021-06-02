@@ -13,10 +13,10 @@ export const Normal = () => {
   const { ref, menuIsOpen, setMenuIsOpen } = useMenuIsOpen()
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className='flex flex-col'>
       <button
         onClick={() => setMenuIsOpen(!menuIsOpen)}
-        className='font-bold p-sm border border-solid border-primary rounded-sm hover:bg-primary-20'
+        className='font-bold p-sm border border-solid border-primary rounded-sm hover:bg-primary-20 w-sm'
       >
         Open Dialog
       </button>

@@ -4,33 +4,35 @@ export const classes = {
     width: `w-${width} max-w-${maxWidth}`,
   }).join(' '),
 
-  listItemRoot: Object.values({
-    border: 'border-2 border-solid border-b-0 border-lightgrey',
-    hover: 'hover:bg-primary-10 cursor-pointer',
+  listItemRoot: ({ itemBorder }) => Object.values({
+    border: itemBorder,
+    hover: 'hover:bg-primary-20 cursor-pointer',
     padding: 'p-sm',
     flex: 'flex justify-between',
   }).join(' '),
 
-  listLastItem: Object.values({
-    border: 'border-2 border-solid border-lightgrey',
-    hover: 'hover:bg-primary-10 cursor-pointer',
+  listLastItem: ({ borderLastItem }) => Object.values({
+    border: borderLastItem,
+    hover: 'hover:bg-primary-20 cursor-pointer',
     padding: 'p-sm',
     flex: 'flex justify-between',
   }).join(' '),
 
   listNoBorder: Object.values({
     border: 'border-0',
-    hover: 'hover:bg-primary-10 cursor-pointer',
+    hover: 'hover:bg-primary-20 cursor-pointer',
     padding: 'p-sm',
     flex: 'flex justify-between',
   }).join(' '),
 
   listItemSelected: Object.values({
-    background: 'bg-primary-20',
+    background: 'bg-primary-10',
+    text: 'text-primary',
   }).join(' '),
 
   listItem: Object.values({
     margin: 'mx-2',
+    font: 'font-sans',
   }).join(' '),
 
   startIconGroup: Object.values({

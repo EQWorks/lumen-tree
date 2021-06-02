@@ -7,7 +7,7 @@ import { classes } from './classes'
 const List = ({ children, border, width, maxWidth, ...props }) => {
   return (
     <ul className={border ? classes.listRoot({ border, width, maxWidth }) : null}>
-      {Children.map(children, (child) => cloneElement(child, { ...props }))}
+      {Children.map(children, (child) => cloneElement(child, { width, ...props }))}
     </ul>
   )
 }

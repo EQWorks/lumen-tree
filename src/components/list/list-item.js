@@ -4,6 +4,7 @@ import PropTypes from 'prop-types'
 import { classes } from './classes'
 
 
+const defaultBorder = 'border-2 border-solid border-t-0 border-r-0 border-l-0 border-lightgrey'
 const ListItem = ({
   name,
   isLastItem,
@@ -13,14 +14,17 @@ const ListItem = ({
   onClick,
   EndIcon,
   StartIcon,
+  width,
+  itemBorder,
+  borderLastItem,
 }) => {
   const listClass = divider 
-    ? (isLastItem ? classes.listLastItem : classes.listItemRoot)
+    ? (isLastItem ? classes.listLastItem({ borderLastItem }) : classes.listItemRoot({ itemBorder }))
     : classes.listNoBorder
   const listSelected = selected ? classes.listItemSelected : ''
 
   return (
-    <div className={`${listClass} ${listSelected}`} onClick={() => onClick(value)}>
+    <div className={`${listClass} ${listSelected} w-${width}`} onClick={() => onClick(value)}>
       <div className={classes.startIconGroup}>
         {StartIcon && <StartIcon />}
         <li className={classes.listItem}>{name}</li>
@@ -31,7 +35,7 @@ const ListItem = ({
 }
 
 ListItem.propTypes = {
-  isLastItem: PropTypes.bool.isRequired,
+  isLastItem: PropTypes.bool,
   name: PropTypes.string,
   divider: PropTypes.bool,
   selected: PropTypes.bool,
@@ -39,8 +43,15 @@ ListItem.propTypes = {
   onClick: PropTypes.func,
   EndIcon: PropTypes.any,
   StartIcon: PropTypes.any,
+  width: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string,
+  ]),
+  itemBorder: PropTypes.string,
+  borderLastItem: PropTypes.string,
 }
 ListItem.defaultProps = {
+  isLastItem: false,
   name: '',
   divider: false,
   selected: false,
@@ -48,6 +59,9 @@ ListItem.defaultProps = {
   onClick: () => {},
   EndIcon: null,
   StartIcon: null,
+  width: 'full',
+  itemBorder: defaultBorder,
+  borderLastItem: 'border-0',
 }
 
 export default ListItem
