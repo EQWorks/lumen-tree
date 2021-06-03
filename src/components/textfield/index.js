@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
 import PropTypes from 'prop-types'
 
-import { classes } from './classes'
+import clsx from 'clsx'
+
 import { useMenuIsOpen } from '../hooks'
 import { ChevronDown, ChevronUp } from '../icons'
 
@@ -28,18 +29,23 @@ const Textfield = ({ focus: _focus, select, value, defaultValue, onClick, onChan
     }
     onChange(e.target.value)
   }
-  
-  const rootClasses = focus ? classes.focus({ width: rest.width }) : classes.root({ width: rest.width })
+   
   return (
-    <div ref={ref} className={`${rootClasses} ${customClasses}`}>
+    <div
+      ref={ref}
+      className={clsx(`${customClasses} border border-solid rounded-sm flex justify-start p-sm w-${rest.width}`, {
+        'border-primary shadow-focus': focus,
+        'border-grey': !focus,
+      })}
+    >
       <input
-        className={`${classes.input} ${customClasses} font-sans`}
+        className={`${customClasses} font-sans focus:outline-none w-full text-primary`}
         value={value || val}
         onClick={inputOnClick}
         onChange={inputOnChange}
         {...rest}
       />
-      {select && <div className={classes.icon}>
+      {select && <div className='mt-0.5 mx-1'>
         {focus ? <ChevronUp /> : <ChevronDown />}
       </div>}
     </div>

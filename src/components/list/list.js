@@ -1,12 +1,16 @@
 import React, { Children, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 
-import { classes } from './classes'
+import clsx from 'clsx'
 
 
 const List = ({ children, border, width, maxWidth, ...props }) => {
   return (
-    <ul className={border ? classes.listRoot({ border, width, maxWidth }) : null}>
+    <ul className={clsx(
+      border && (`border-2 border-solid
+      border-${border.length ? border : 'lightgrey'}
+      w-${width} max-w-${maxWidth}`),
+    )}>
       {Children.map(children, (child) => cloneElement(child, { width, ...props }))}
     </ul>
   )

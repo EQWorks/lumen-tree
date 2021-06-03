@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { classes } from './classes'
+import clsx from 'clsx'
 
 
 const defaultBorder = 'border-2 border-solid border-t-0 border-r-0 border-l-0 border-lightgrey'
@@ -18,16 +18,19 @@ const ListItem = ({
   itemBorder,
   borderLastItem,
 }) => {
-  const listClass = divider 
-    ? (isLastItem ? classes.listLastItem({ borderLastItem }) : classes.listItemRoot({ itemBorder }))
-    : classes.listNoBorder
-  const listSelected = selected ? classes.listItemSelected : ''
-
   return (
-    <div className={`${listClass} ${listSelected} w-${width}`} onClick={() => onClick(value)}>
-      <div className={classes.startIconGroup}>
+    <div
+      className={clsx(`hover:bg-primary-20 cursor-pointer p-sm flex justify-between w-${width}`, {
+        [`${borderLastItem}`]: divider && isLastItem,
+        [`${itemBorder}`]: divider && !isLastItem,
+        'border-0': !divider,
+        'bg-primary-10 text-primary': selected,
+      })}
+      onClick={() => onClick(value)}
+    >
+      <div className='flex justify-between'>
         {StartIcon && <StartIcon />}
-        <li className={classes.listItem}>{name}</li>
+        <li className='mx-2 font-sans'>{name}</li>
       </div>
       {EndIcon && <EndIcon />}
     </div>

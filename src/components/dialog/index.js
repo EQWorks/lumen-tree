@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+import clsx from 'clsx'
+
 
 const Dialog = ({ open, children, disablePadding }) => {
-  const padding = disablePadding ? '': 'p-sm'
   if (open) {
     return (
-      <div className={`inline-flex z-10 shadow-md mt-1 ${padding}`}>{children}</div>
+      <div className={clsx('inline-flex z-10 shadow-md mt-1', { 'p-sm': !disablePadding })}>{children}</div>
     )
   }
   return null
