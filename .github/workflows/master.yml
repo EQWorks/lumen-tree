@@ -3,10 +3,10 @@ name: Master PR and push
 on:
   pull_request:
     branches:
-      - master
+      - main
   push:
     branches:
-      - master
+      - main
 
 jobs:
   build:
@@ -34,6 +34,7 @@ jobs:
       - run: yarn install
         env:
           NODE_AUTH_TOKEN: ${{ secrets.CD_GITHUB_TOKEN }}
+      - run: NODE_ENV=production yarn build-tailwindcss
       - run: yarn build
 
   lint:
