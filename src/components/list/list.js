@@ -10,6 +10,7 @@ const List = ({ children, border, width, maxWidth, ...props }) => {
       border && (`border-2 border-solid
       border-${border.length ? border : 'lightgrey'}
       w-${width} max-w-${maxWidth}`),
+      'z-10',
     )}>
       {Children.map(children, (child) => cloneElement(child, { width, ...props }))}
     </ul>
