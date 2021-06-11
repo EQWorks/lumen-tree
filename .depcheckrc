@@ -15,4 +15,3 @@ ignores: [
     "postcss-cli",
     "@tailwindcss/postcss7-compat",
 ]
-skip-missing: true

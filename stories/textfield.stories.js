@@ -1,6 +1,6 @@
 import React from 'react'
 
-import { useMenuIsOpen } from '../src/components/hooks'
+import { useComponentIsActive } from '../src/components/hooks'
 import { Dialog, Textfield } from '../src/components'
 import ListMenu from '../src/components/tree/list-menu'
 
@@ -29,11 +29,17 @@ export const Normal = () => {
 }
 
 export const Select = () => {
-  const { ref, menuIsOpen, setMenuIsOpen } = useMenuIsOpen()
+  const { ref, componentIsActive, setComponentIsActive } = useComponentIsActive()
   return (
     <div ref={ref} className='w-md'>
-      <Textfield width='md' select focus={menuIsOpen} onClick={() => setMenuIsOpen(true)} />
-      <Dialog disablePadding={true} open={menuIsOpen}>
+      <Textfield
+        width='md'
+        select
+        focus={componentIsActive}
+        setFocus={setComponentIsActive}
+        onClick={() => setComponentIsActive(true)}
+      />
+      <Dialog disablePadding={true} open={componentIsActive}>
         <ListMenu width='md' options={menu} />
       </Dialog>
     </div>)

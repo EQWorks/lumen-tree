@@ -11,8 +11,8 @@ export const useMenuChange = ({
   placeholder: _placeholder,
   onMenuChange: _onMenuChange,
   onSearchMenuChange,
-  menuIsOpen,
-  setMenuIsOpen,
+  componentIsActive,
+  setComponentIsActive,
 }) => {
   const [selectedNodes, setSelectedNodes] = useState([])
   const [listMenuOptions, setListMenuOptions] = useState([])
@@ -40,15 +40,15 @@ export const useMenuChange = ({
   }, [menuOptions, _search])
 
   useEffect(() => {
-    if (!menuIsOpen) {
+    if (!componentIsActive) {
       setSearch('')
       setListMenuOptions([])
       setValue(`${_value.join(' › ')}`)
     }
-  }, [menuIsOpen, _value])
+  }, [componentIsActive, _value])
 
   const handleInputClick = () => {
-    setMenuIsOpen(true)
+    setComponentIsActive(true)
     setPlaceholder(value)
     setValue('')
   }
@@ -57,7 +57,7 @@ export const useMenuChange = ({
     setSelectedNodes((findNodes(menuOptions, value.id)).map(({ id }) => id))
     _onMenuChange({ ...value })
     if (!value.children.length) {
-      setMenuIsOpen(false)
+      setComponentIsActive(false)
     }
   }
 

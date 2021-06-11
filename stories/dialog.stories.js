@@ -1,7 +1,7 @@
 import React from 'react'
 
 import { Dialog } from '../src/components'
-import { useMenuIsOpen } from '../src/components/hooks'
+import { useComponentIsActive } from '../src/components/hooks'
 
 
 export default {
@@ -10,17 +10,17 @@ export default {
 }
 
 export const Normal = () => {
-  const { ref, menuIsOpen, setMenuIsOpen } = useMenuIsOpen()
+  const { ref, componentIsActive, setComponentIsActive } = useComponentIsActive()
 
   return (
     <div ref={ref} className='flex flex-col'>
       <button
-        onClick={() => setMenuIsOpen(!menuIsOpen)}
+        onClick={() => setComponentIsActive(!componentIsActive)}
         className='font-bold p-sm border border-solid border-primary rounded-sm hover:bg-primary-20 w-sm'
       >
         Open Dialog
       </button>
-      <Dialog open={menuIsOpen}>
+      <Dialog open={componentIsActive}>
         I am just a simple dialog.
         More improvements needed to make my usage more flexible.
       </Dialog>

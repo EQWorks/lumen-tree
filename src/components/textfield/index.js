@@ -3,22 +3,29 @@ import PropTypes from 'prop-types'
 
 import clsx from 'clsx'
 
-import { useMenuIsOpen } from '../hooks'
+import { useComponentIsActive } from '../hooks'
 import { ChevronDown, ChevronUp } from '../icons'
 
 
-const Textfield = ({ focus: _focus, select, value, defaultValue, onClick, onChange, customClasses, ...rest }) => {
+const Textfield = ({
+  select,
+  focus: _focus,
+  setFocus: _setFocus,
+  value,
+  defaultValue,
+  onClick,
+  onChange,
+  customClasses,
+  ...rest
+}) => {
   const [val, setVal] = useState(defaultValue)
-  const { ref, menuIsOpen, setMenuIsOpen: _setFocus } = useMenuIsOpen()
-  let focus = menuIsOpen
+  const { ref, componentIsActive, setComponentIsActive } = useComponentIsActive()
+  let focus = componentIsActive
+  let setFocus = setComponentIsActive
 
   if (select) {
     focus = _focus
-  }
-
-  const inputOnClick = () => {
-    _setFocus(true)
-    onClick()
+    setFocus = _setFocus
   }
 
   const inputOnChange = (e) => {
@@ -37,11 +44,12 @@ const Textfield = ({ focus: _focus, select, value, defaultValue, onClick, onChan
         'border-primary shadow-focus': focus,
         'border-grey': !focus,
       })}
+      onFocus={() => setFocus(true)}
     >
       <input
         className={`${customClasses} font-sans focus:outline-none w-full text-primary`}
         value={value || val}
-        onClick={inputOnClick}
+        onClick={onClick}
         onChange={inputOnChange}
         {...rest}
       />
@@ -60,6 +68,7 @@ Textfield.propTypes = {
   onChange: PropTypes.func,
   ref: PropTypes.node,
   focus: PropTypes.bool,
+  setFocus: PropTypes.func,
   customClasses: PropTypes.string,
 }
 Textfield.defaultProps = {
@@ -70,6 +79,7 @@ Textfield.defaultProps = {
   onChange: () => {},
   ref: null,
   focus: false,
+  setFocus: () => {},
   customClasses: '',
 }
 
