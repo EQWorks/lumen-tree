@@ -7,7 +7,7 @@ import clsx from 'clsx'
 const Dialog = ({ open, children, disablePadding }) => {
   if (open) {
     return (
-      <div className={clsx('inline-flex z-50 shadow-md mt-1', { 'p-sm': !disablePadding })}>{children}</div>
+      <div className={clsx('fixed inline-flex z-50 shadow-40 mt-1', { 'p-sm': !disablePadding })}>{children}</div>
     )
   }
   return null
