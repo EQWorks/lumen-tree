@@ -40,14 +40,14 @@ const Textfield = ({
   return (
     <div
       ref={ref}
-      className={clsx(`${customClasses} border border-solid rounded-sm flex justify-start p-sm w-${rest.width}`, {
-        'border-primary shadow-focus': focus,
-        'border-grey': !focus,
+      className={clsx(`${customClasses} border rounded-sm flex justify-start p-sm ${rest.width}`, {
+        'border-primary-700 shadow-focused-primary': focus,
+        'border': !focus,
       })}
       onFocus={() => setFocus(true)}
     >
       <input
-        className={`${customClasses} font-sans focus:outline-none w-full text-primary`}
+        className={`${customClasses} focus:outline-none w-full text-primary-700`}
         value={value || val}
         onClick={onClick}
         onChange={inputOnChange}

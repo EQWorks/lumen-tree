@@ -32,8 +32,8 @@ const renderMenu = ({ parentLists = [], menuOptions, ...rest }) => {
         selected={isSelected}
         onClick={() => rest.onMenuChange({ ...option })}
         EndIcon={MenuIcon}
-        itemBorder='border-2 border-solid border-t-0 border-l-0 border-lightgrey'
-        borderLastItem='border-2 border-solid border-t-0 border-r-0 border-l-0 border-lightgrey'
+        itemBorder='border border-t-0 border-neutral-50'
+        borderLastItem='border border-t-0 border-r-0 border-neutral-50'
       />
     )
   })

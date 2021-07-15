@@ -18,7 +18,7 @@ const Tree = (props) => {
 
   return (
     <div ref={ref}>
-      {label && <p className='text-xs text-left text-primary font-sans tracking-tighter mb-px'>{label}</p>}
+      {label && <p className='text-xs text-left text-primary-700 tracking-tighter mb-px'>{label}</p>}
       <Textfield
         select
         focus={componentIsActive}
@@ -28,7 +28,7 @@ const Tree = (props) => {
         onClick={handleInputClick}
         onChange={(val) => setSearch(val)}
         width={width}
-        customClasses={value ? 'border-primary bg-primary-10' : ''}
+        customClasses={value ? 'border-primary-700 bg-neutral-50' : ''}
       />
       <Dialog disablePadding={true} open={componentIsActive}>
         {componentIsActive && !listMenuOptions.length && (
