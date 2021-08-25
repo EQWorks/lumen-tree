@@ -4,10 +4,9 @@ import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 
-const defaultBorder = 'border-2 border-t-0 border-r-0 border-l-0 border-neutral-50'
 const ListItem = ({
+  classes,
   name,
-  isLastItem,
   divider,
   selected,
   value,
@@ -15,29 +14,27 @@ const ListItem = ({
   EndIcon,
   StartIcon,
   width,
-  itemBorder,
-  borderLastItem,
 }) => {
   return (
     <div
-      className={clsx(`flex justify-between hover:bg-interactive-50 cursor-pointer p-sm ${width}`, {
-        [`${borderLastItem}`]: divider && isLastItem,
-        [`${itemBorder}`]: divider && !isLastItem,
+      className={clsx(`flex justify-between hover:bg-neutral-100 cursor-pointer p-sm ${width} tracking-sm text-sm`, {
         'border-0': !divider,
-        'bg-neutral-50 text-primary-700': selected,
+        'bg-interactive-100 font-semibold text-secondary-900': selected,
+        'font-normal text-secondary-800': !selected,
       })}
       onClick={() => onClick(value)}
     >
       <div className='flex justify-between'>
-        {StartIcon && <StartIcon />}
+        <span>{StartIcon && <StartIcon />}</span>
         <li className='mx-2'>{name}</li>
       </div>
-      {EndIcon && <EndIcon />}
+      <span className={classes.endIcon}>{EndIcon && <EndIcon />}</span>
     </div>
   )
 }
 
 ListItem.propTypes = {
+  classes: PropTypes.object,
   isLastItem: PropTypes.bool,
   name: PropTypes.string,
   divider: PropTypes.bool,
@@ -50,10 +47,9 @@ ListItem.propTypes = {
     PropTypes.number,
     PropTypes.string,
   ]),
-  itemBorder: PropTypes.string,
-  borderLastItem: PropTypes.string,
 }
 ListItem.defaultProps = {
+  classes: { endIcon: '' },
   isLastItem: false,
   name: '',
   divider: false,
@@ -63,8 +59,6 @@ ListItem.defaultProps = {
   EndIcon: null,
   StartIcon: null,
   width: 'full',
-  itemBorder: defaultBorder,
-  borderLastItem: 'border-0',
 }
 
 export default ListItem

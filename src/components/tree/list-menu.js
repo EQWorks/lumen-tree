@@ -7,13 +7,12 @@ import ListItem from '../list/list-item'
 
 const ListMenu = ({ options, onClick, width }) => {
   return (
-    <List width={width}>
+    <List width={width} classes={{ list: 'mt-1 border border-secondary-400 rounded-sm shadow-light-30' }}>
       {options.map((option, i) => {
         return (<ListItem
           key={i}
           name={`${(option.map(({ name }) => name)).join(' › ')}`}
           onClick={() => onClick(option)}
-          isLastItem={Boolean(options.length - 1 === i)}
         />)
       })}
     </List>

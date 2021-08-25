@@ -52,6 +52,7 @@
   "dependencies": {
     "@headlessui/react": "^1.4.0",
     "clsx": "^1.1.1",
+    "goober": "^2.0.41",
     "prop-types": "^15.7.2",
     "use-debounce": "^6.0.1"
   }

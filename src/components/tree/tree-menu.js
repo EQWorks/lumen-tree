@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import { ChevronRight, CheckOutlined } from '../icons'
+import { ChevronRight, Check } from '../icons'
 import List from '../list/list'
 import ListItem from '../list/list-item'
 
@@ -15,7 +15,7 @@ const renderMenu = ({ parentLists = [], menuOptions, ...rest }) => {
 
     if (!children.length) {
       if (isSelected) {
-        MenuIcon = CheckOutlined
+        MenuIcon = Check
       } else {
         MenuIcon = null
       }
@@ -32,8 +32,7 @@ const renderMenu = ({ parentLists = [], menuOptions, ...rest }) => {
         selected={isSelected}
         onClick={() => rest.onMenuChange({ ...option })}
         EndIcon={MenuIcon}
-        itemBorder='border border-t-0 border-neutral-50'
-        borderLastItem='border border-t-0 border-r-0 border-neutral-50'
+        classes={{ endIcon: isSelected ? 'mt-px' : 'mt-1' }}
       />
     )
   })
@@ -47,9 +46,9 @@ const renderMenu = ({ parentLists = [], menuOptions, ...rest }) => {
 const TreeMenu = ({ width, menuOptions, onMenuChange, selectedNodes }) => {
   const treeMenu = renderMenu({ onMenuChange, menuOptions, selectedNodes })
   return (
-    <div className='inline-flex'>
+    <div className='mt-1 inline-flex border border-secondary-400 rounded-sm shadow-light-30'>
       {treeMenu.map((list, i) => {
-        return (<List key={i} width={width} isLastItem={(i === treeMenu.length - 1)}>{list}</List>)
+        return (<List key={i} width={width} border isLastItem={(i === treeMenu.length - 1)}>{list}</List>)
       })}
     </div>
   )
