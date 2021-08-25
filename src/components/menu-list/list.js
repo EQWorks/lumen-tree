@@ -12,7 +12,7 @@ const styles = makeStyles({
 
 const List = ({ children, classes, border, width, isLastItem, ...props }) => {
   return (
-    <ul className={clsx(`z-10 py-1 ${styles.list} ${classes.list}`, {
+    <ul className={clsx(`z-10 py-1 bg-white ${styles.list} ${classes.list}`, {
       'border-0': border && isLastItem,
       'border-r border-secondary-400': border && !isLastItem,
     })}>

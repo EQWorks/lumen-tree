@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-import List from '../list/list'
-import ListItem from '../list/list-item'
+import { List, ListItem } from '../menu-list'
 
 
 const ListMenu = ({ options, onClick, width }) => {
