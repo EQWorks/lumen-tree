@@ -19,7 +19,7 @@ const Popover = ({ children, button, open }) => {
         leaveFrom='transform opacity-100 scale-100'
         leaveTo='transform opacity-0 scale-100'
       >
-        <HeadlessPopover.Panel static>{children}</HeadlessPopover.Panel>
+        <HeadlessPopover.Panel static className='absolute z-50'>{children}</HeadlessPopover.Panel>
       </Transition>
       )}
     </HeadlessPopover>
