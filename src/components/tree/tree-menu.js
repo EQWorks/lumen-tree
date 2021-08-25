@@ -47,7 +47,7 @@ const renderMenu = ({ parentLists = [], menuOptions, ...rest }) => {
 const TreeMenu = ({ width, menuOptions, onMenuChange, selectedNodes }) => {
   const treeMenu = renderMenu({ onMenuChange, menuOptions, selectedNodes })
   return (
-    <div className='flex justify-between'>
+    <div className='inline-flex'>
       {treeMenu.map((list, i) => {
         return (<List key={i} width={width} isLastItem={(i === treeMenu.length - 1)}>{list}</List>)
       })}
