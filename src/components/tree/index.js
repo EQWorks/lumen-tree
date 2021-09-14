@@ -1,11 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
+
 import { useComponentIsActive, useMenuChange } from '../hooks'
-import Dialog from '../dialog'
-import Textfield from '../textfield'
 import TreeMenu from './tree-menu'
 import ListMenu from './list-menu'
+import Popover from '../popover'
+import SelectorInput from '../selector-input'
 
 
 const Tree = (props) => {
@@ -16,11 +17,10 @@ const Tree = (props) => {
     handlers: { setSearch, handleInputClick, onMenuChange, handleSearchClick },
   } = useMenuChange({ ...props, componentIsActive, setComponentIsActive })
 
-  return (
-    <div ref={ref}>
-      {label && <p className='text-xs text-left text-primary font-sans tracking-tighter mb-px'>{label}</p>}
-      <Textfield
-        select
+  const button = (
+    <>
+      {label && <p className='font-normal tracking-sm text-sm text-left text-secondary-600 mb-1 ml-0.5'>{label}</p>}
+      <SelectorInput
         focus={componentIsActive}
         setFocus={setComponentIsActive}
         value={search || value}
@@ -28,14 +28,17 @@ const Tree = (props) => {
         onClick={handleInputClick}
         onChange={(val) => setSearch(val)}
         width={width}
-        customClasses={value ? 'border-primary bg-primary-10' : ''}
       />
-      <Dialog disablePadding={true} open={componentIsActive}>
+    </>
+  )
+  return (
+    <div ref={ref} className='inline-block'>
+      <Popover open={componentIsActive} button={button}>
         {componentIsActive && !listMenuOptions.length && (
           <TreeMenu menuOptions={menuOptions} onMenuChange={onMenuChange} selectedNodes={selectedNodes} />
         )}
         {(componentIsActive && listMenuOptions.length) ? (<ListMenu width={width} options={listMenuOptions} onClick={handleSearchClick} />) : null}
-      </Dialog>
+      </Popover>
     </div>
   )
 }

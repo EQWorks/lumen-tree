@@ -1,3 +1,11 @@
+import { css } from 'goober'
+
+
+export const makeStyles = (classObj) => Object.entries(classObj).reduce((acc, [key, val]) => {
+  acc[key] = css(val)
+  return acc
+}, {})
+
 export const findNodes = (options = [], targetID, parents = []) => (
   options.map(({ id, name, children }) => {
     if (targetID === id) {

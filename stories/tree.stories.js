@@ -25,7 +25,7 @@ export const Default = () => {
       defaultValue={selectedNodes.map(({ id }) => id)}
       placeholder='Select...'
       onMenuChange={handleCategoryClick}
-      width='md'
+      width='w-80'
     />
   )
 }
